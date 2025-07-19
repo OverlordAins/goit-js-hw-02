@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="Homework 1 at JavaScript" />
+    <meta name="description" content="Homework 2 at JavaScript" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -11,7 +11,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>JS HW 1</title>
+    <title>JS HW 2</title>
     <script src="./js/task-1.js"></script>
     <script src="./js/task-2.js"></script>
     <script src="./js/task-3.js"></script>
@@ -27,9 +27,91 @@
         max-width: 500px;
         margin: 0 auto;
         margin-top: 20px;
+        margin-bottom: 100px;
+        border-radius: 3px;
       "
     >
       Java Script HW2
     </h1>
+    <p
+      style="
+        margin: 0 auto;
+        max-width: 100px;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+        font-size: 32px;
+        background-color: transparent;
+        transform: translateX(-400px);
+      "
+    >
+      Console:
+    </p>
+    <div
+      id="log-output"
+      style="
+        width: 900px;
+        height: 600px;
+        background-color: rgb(90, 90, 90);
+        margin: 0 auto;
+        margin-bottom: 25px;
+        border: 3px solid rgba(196, 14, 14, 0.452);
+        border-radius: 10px;
+        color: whitesmoke;
+        font-weight: 500;
+        padding: 10px 20px;
+        overflow: auto;
+        letter-spacing: 0.1em;
+      "
+    ></div>
+    <script>
+      const originalLog = console.log;
+
+      console.log = function (message) {
+        originalLog(message);
+        const output = document.getElementById('log-output');
+        const p = document.createElement('p');
+        p.textContent = message;
+        output.appendChild(p);
+      };
+
+      function makeTransaction(quantity, pricePerDroid, customerCredits) {
+        'use strict';
+
+        const totalPrice = quantity * pricePerDroid;
+
+        if (totalPrice > customerCredits) {
+          return 'Insufficient funds!';
+        } else {
+          return `You ordered ${quantity} droids worth ${totalPrice} credits!`;
+        }
+      }
+      console.log('TASK-1');
+      console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth 15000 credits!"
+      console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3 droids worth 3000 credits!"
+      console.log(makeTransaction(10, 5000, 8000)); // "Insufficient funds!"
+      console.log(makeTransaction(8, 2000, 10000)); // "Insufficient funds!"
+      console.log(makeTransaction(10, 500, 5000)); // "You ordered 10 droids worth 5000 credits!"
+      console.log('---');
+
+      function formatMessage(message, maxLength) {
+        if (message.length <= maxLength) {
+          return message;
+        } else {
+          return message.slice(0, maxLength) + '...';
+        }
+      }
+      console.log('TASK-2');
+      console.log(formatMessage('Curabitur ligula sapien', 16)); // "Curabitur ligula..."
+      console.log(formatMessage('Curabitur ligula sapien', 23)); // "Curabitur ligula sapien"
+      console.log(formatMessage('Vestibulum facilisis purus nec', 20)); // "Vestibulum facilisis..."
+      console.log(formatMessage('Vestibulum facilisis purus nec', 30)); // "Vestibulum facilisis purus nec"
+      console.log(
+        formatMessage('Nunc sed turpis a felis in nunc fringilla', 15)
+      ); // "Nunc sed turpis..."
+      console.log(
+        formatMessage('Nunc sed turpis a felis in nunc fringilla', 41)
+      ); // "Nunc sed turpis a felis in nunc fringilla"
+      console.log('---');
+    </script>
   </body>
 </html>
