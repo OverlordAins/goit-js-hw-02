@@ -42,15 +42,16 @@
     <p
       style="
         margin: 0 auto;
-        max-width: 100px;
+        margin-bottom: 10px;
+        max-width: 200px;
         letter-spacing: 0.05em;
         font-weight: 500;
         font-size: 32px;
         background-color: transparent;
-        transform: translateX(-400px);
+        transform: translateX(-350px);
       "
     >
-      Console:
+      Console log:
     </p>
     <div
       id="log-output"
@@ -118,6 +119,54 @@
       console.log(
         formatMessage('Nunc sed turpis a felis in nunc fringilla', 41)
       ); // "Nunc sed turpis a felis in nunc fringilla"
+      console.log('---');
+
+      function checkForSpam(message) {
+        const lowerCaseMessage = message.toLowerCase();
+        return (
+          lowerCaseMessage.includes('spam') || lowerCaseMessage.includes('sale')
+        );
+      }
+      console.log('TASK-3');
+      console.log(checkForSpam('Latest technology news')); // false
+      console.log(checkForSpam('JavaScript weekly newsletter')); // false
+      console.log(checkForSpam('Get best sale offers now!')); // true
+      console.log(checkForSpam('Amazing SalE, only tonight!')); // true
+      console.log(checkForSpam('Trust me, this is not a spam message')); // true
+      console.log(checkForSpam('Get rid of sPaM emails. Our book in on sale!')); // true
+      console.log(checkForSpam('[SPAM] How to earn fast money?')); // true
+      console.log('---');
+
+      function getShippingCost(country) {
+        let message = country.toLowerCase();
+        switch (message) {
+          case 'china':
+            price = 100;
+            return `Shipping to ${country} will cost ${price} credits`;
+            break;
+          case 'chile':
+            price = 250;
+            return `Shipping to ${country} will cost ${price} credits`;
+            break;
+          case 'australia':
+            price = 170;
+            return `Shipping to ${country} will cost ${price} credits`;
+            break;
+          case 'jamaica':
+            price = 120;
+            return `Shipping to ${country} will cost ${price} credits`;
+            break;
+          default:
+            return 'Sorry, there is no delivery to your country';
+        }
+      }
+      console.log('TASK-4');
+      console.log(getShippingCost('Australia')); // "Shipping to Australia will cost 170 credits"
+      console.log(getShippingCost('Germany')); // "Sorry, there is no delivery to your country"
+      console.log(getShippingCost('China')); // "Shipping to China will cost 100 credits"
+      console.log(getShippingCost('Chile')); // "Shipping to Chile will cost 250 credits"
+      console.log(getShippingCost('Jamaica')); // "Shipping to Jamaica will cost 120 credits"
+      console.log(getShippingCost('Sweden')); // "Sorry, there is no delivery to your country"
       console.log('---');
     </script>
   </body>
